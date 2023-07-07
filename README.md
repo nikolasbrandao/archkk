@@ -44,7 +44,7 @@ The product service has three routes that work for creating and retrieving produ
 
 > The product creation route was added to provide more autonomy to those who want to use the solution without needing direct access to the database.
 
-### * POST [products]
+### - POST [products]
 
 ```bash
 curl -X 'POST' \
@@ -55,4 +55,30 @@ curl -X 'POST' \
   "productID": 42,
   "price": 42.42
 }'
+```
+
+The route returns a status 201 and the object that was persisted in the database.
+
+### - GET [all products]
+
+```bash
+curl -X 'GET' \
+  'http://localhost:3001/products' \
+  -H 'accept: */*'
+```
+
+This route returns all persisted products.
+
+> O serviço ja inicia com dois produtos persistidos
+
+```json
+[{"productID":1234,"price":22.32},{"productID":1233,"price":22.32},]
+```
+
+### - GET [single product]
+
+```bash
+curl -X 'GET' \
+  'http://localhost:3000/products/1234' \
+  -H 'accept: */*'
 ```
