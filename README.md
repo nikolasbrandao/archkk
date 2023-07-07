@@ -36,7 +36,7 @@ At the end of the command execution, all services, databases, and the API will b
 
 All services already have a small seed of example data for better usage without the need to create new items in the database.
 
-### Product service
+## Product service
 
 The product service is the only one among the services that does not have Swagger documentation.
 This was a choice based on the size of the project, which aims to retrieve product information.
@@ -69,7 +69,7 @@ curl -X 'GET' \
 
 This route returns all persisted products.
 
-> O serviço ja inicia com dois produtos persistidos
+> The service already starts with two persisted products.
 
 ```json
 [{"productID":1234,"price":22.32},{"productID":1233,"price":22.32},]
@@ -82,3 +82,13 @@ curl -X 'GET' \
   'http://localhost:3000/products/1234' \
   -H 'accept: */*'
 ```
+
+## Cart Service Documentation
+
+The documentation for the cart-service can be accessed in the service's Swagger. The link to it is [http://localhost:3002/docs](http://localhost:3002/docs)
+
+## Product Cart API Documentation
+
+The documentation for the product-cart-api can be accessed in the service's Swagger. The link to it is [http://localhost:3001/docs](http://localhost:3001/docs)
+
+> To access both service and api documentations, the cart-service and the API need to be running.
