@@ -1,0 +1,40 @@
+version: '3.9'
+services:
+  mongodb:
+    image: mongo:latest
+    env_file:
+      - .env
+    ports:
+      - 27017:27017
+    volumes:
+      - mongodb_data_container:/data/db
+  mongo_seed:
+    image: mongo:latest
+    links:
+      - mongodb
+    volumes:
+      - ./mongo-seed:/mongo-seed
+    command:
+      - /bin/bash
+      - -c
+      - |
+        chmod +x import.sh
+        /mongo-seed/import.sh
+    depends_on:
+      - mongodb
+  product-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: npm run start:dev
+    env_file:
+      - .env
+    ports:
+      - ${SERVER_PORT}:${SERVER_PORT}
+    volumes:
+      - .:/app
+      - /app/node_modules
+    depends_on:
+      - mongodb
+volumes:
+  mongodb_data_container:
