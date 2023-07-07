@@ -1,15 +1,18 @@
 # KuantoKusta challenge
 
-# Cart Service
+## Cart Service
 For the challenge, two microservices and an API were created, which centralizes the resources and serves as a gateway.
 
 The first service was written using NestJS, Postgres, and TypeORM.
 The service already includes a Docker configuration that is responsible for spinning up the Nest service and the PostgreSQL database.
 
-# Product Service
+## Product Service
 The second service was also written using NestJS, but it utilizes a MongoDB database and Mongoose as the ODM for product data modeling.
 
-# Requirement
+## Product Cart Api
+The third artifact of our solution is the product cart API. This API is responsible for retrieving information from the product service and consolidating that information in the cart service. 
+
+## Requirement
 
 You only need to have Docker and NestJS installed. In case you want to know how to install them, here are the tutorials:
 
@@ -29,3 +32,27 @@ sudo chmod +x init.sh
 
 At the end of the command execution, all services, databases, and the API will be up and running.
 
+## Using the solution
+
+All services already have a small seed of example data for better usage without the need to create new items in the database.
+
+### Product service
+
+The product service is the only one among the services that does not have Swagger documentation.
+This was a choice based on the size of the project, which aims to retrieve product information.
+The product service has three routes that work for creating and retrieving products.
+
+> The product creation route was added to provide more autonomy to those who want to use the solution without needing direct access to the database.
+
+### * POST [products]
+
+```bash
+curl -X 'POST' \
+  'http://localhost:3001/products' \
+  -H 'accept: */*' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "productID": 42,
+  "price": 42.42
+}'
+```
