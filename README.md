@@ -89,6 +89,6 @@ The documentation for the cart-service can be accessed in the service's Swagger.
 
 ## Product Cart API Documentation
 
-The documentation for the product-cart-api can be accessed in the service's Swagger. The link to it is [http://localhost:3001/docs](http://localhost:3001/docs)
+The documentation for the product-cart-api can be accessed in the service's Swagger. The link to it is [http://localhost:3000/docs](http://localhost:3000/docs)
 
 > To access both service and api documentations, the cart-service and the API need to be running.
